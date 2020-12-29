@@ -71,11 +71,11 @@ xterm -T GRESIK -e linux ubd0=GRESIK,jarkom umid=GRESIK eth0=daemon,,,switch5 me
 
 topologi sistem diatur dengan menggunakan **VLSM** seperti pada gambar berikut. subnet yang dipakai adalah yang dilingkari warna *pink*.
 
-![B](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/B1.png)
+![B](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/B1.jpg)
 
 dengan pembagian IP tiap subnet seperti pada gambar berikut.
 
-![B](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/B2.png)
+![B](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/B2.jpg)
 
 berikut tabel untuk pembagian IP sistem.
 
