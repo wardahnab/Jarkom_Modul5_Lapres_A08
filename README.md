@@ -1,4 +1,4 @@
-# Lapres Modul 5
+# Lapres Praktikum Modul 5
 
 ## Soal A
 
@@ -23,6 +23,8 @@
 
 
 **Jawaban**
+
+
 menyusun konfigurasi pada file `topologi.sh` seperti berikut.
 
 ### Switch
@@ -56,18 +58,24 @@ xterm -T SIDOARJO -e linux ubd0=SIDOARJO,jarkom umid=SIDOARJO eth0=daemon,,,swit
 xterm -T GRESIK -e linux ubd0=GRESIK,jarkom umid=GRESIK eth0=daemon,,,switch5 mem=96M &
 ```
 
+
+![A](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/A.png)
+
+
 ## Soal B
 (B) karena kalian telah mempelajari Subnetting dan Routing, Bibah meminta kalian untuk membuat topologi tersebut menggunakan teknik CIDR atau VLSM. Setelah melakukan subnetting, 
 
 
 **Jawaban**
+
+
 topologi sistem diatur dengan menggunakan **VLSM** seperti pada gambar berikut. subnet yang dipakai adalah yang dilingkari warna *pink*.
 
-(gambar VLSM)
+![B](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/B1.png)
 
 dengan pembagian IP tiap subnet seperti pada gambar berikut.
 
-(gambar tree)
+![B](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/B2.png)
 
 berikut tabel untuk pembagian IP sistem.
 
@@ -252,6 +260,8 @@ gateway 192.168.2.1
 
 
 **Jawaban**
+
+
 berikut adalah tabel routing yang digunakan.
 
 | ROUTER   | SUBNET      | NID          | NETMASK         | GATEWAY     |
@@ -279,6 +289,10 @@ route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.0.6
 route add -net 192.168.0.8 netmask 255.255.255.248 gw 192.168.0.6
 ```
 
+
+![C](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/C1.png)
+
+
 ### Batu
 ```
 route add -net 192.168.0.4 netmask 255.255.255.252 gw 192.168.0.1
@@ -286,6 +300,10 @@ route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.0.1
 route add -net 192.168.0.8 netmask 255.255.255.248 gw 192.168.0.1
 route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.1
 ```
+
+
+![C](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/C2.png)
+
 
 ### Kediri
 ```
@@ -295,6 +313,9 @@ route add -net 192.168.0.0 netmask 255.255.255.252 gw 192.168.0.5
 route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.5
 ```
 
+![C](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/C3.png)
+
+
 untuk menjalanakan routing, digunakan perintah `source route.sh`.
 
 ## Soal D
@@ -302,6 +323,7 @@ untuk menjalanakan routing, digunakan perintah `source route.sh`.
 
 
 **Jawaban**
+
 
 ### DHCP Server
 - yaitu pada UML Mojokerto. 
@@ -335,7 +357,12 @@ subnet 192.168.2.0 netmask 255.255.255.0 {
 }
 ```
 
-(foto ss dhcp server)
+![D](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/D3.png)
+
+![D](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/D4.png)
+
+![D](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/D5.png)
+
 
 ### DHCP Relay
 - yaitu pada UML Surabaya, Batu, dan Kediri.
@@ -344,22 +371,22 @@ subnet 192.168.2.0 netmask 255.255.255.0 {
 - dan juga mengatur interfaces seperti berikut.
   - Surabaya : `INTERFACESv4="eth1 eth2"`
     
-    (foto sby)
+    ![D](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/D7.png)
     
   - Batu : `INTERFACESv4="eth0 eth1 eth2"`
   
-    (foto batu)
+    ![D](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/D8.png)
     
   - Kediri : `INTERFACESv4="eth0 eth1 eth2"`
   
-    (foto kediri)
+    ![D](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/D6.png)
 
 ### DHCP Client
 yaitu pada UML Gresik dan Sidoarjo diatur agar IPnya dinamis.
 
-(foto uml gresik)
+![D](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/D2.png)
 
-(foto uml sidoarjo)
+![D](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/D1.png)
 
 ---
 
@@ -369,6 +396,8 @@ yaitu pada UML Gresik dan Sidoarjo diatur agar IPnya dinamis.
 
 
 **Jawaban**
+
+
 mengatur konfigurasi pada `iptables` di Surabaya seperti berikut.
 ```
 iptables -t nat -A POSTROUTING -o eth0 -j SNAT --to 10.151.72.38
@@ -377,13 +406,28 @@ iptables -t nat -A POSTROUTING -o eth0 -j SNAT --to 10.151.72.38
 - perintah dijalankan dengan `bash iptables.sh` di Surabaya. 
 - kemudian, untuk mengecek apakah perintah berhasil, dilakukan ping ke `its.ac.id` di semua UML seperti berikut.
 
-(foto bukti ss)
+![1](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/1.1.png)
+
+![1](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/1.2.png)
+
+![1](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/1.3.png)
+
+![1](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/1.4.png)
+
+![1](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/1.5.png)
+
+![1](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/1.6.png)
+
+![1](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/1.7.png)
+
 
 ## No. 2
 
 (2) Kalian diminta untuk mendrop semua akses SSH dari luar Topologi (UML) Kalian pada server yang memiliki ip DMZ (DHCP dan DNS SERVER) pada SURABAYA demi menjaga keamanan.
 
 **Jawaban**
+
+
 pada `iptables` di Surabaya, ditambah konfigurasi seperti berikut.
 ```
 iptables -A FORWARD -p tcp --dport 22 -d 10.151.73.72/29 -i eth0 -j DROP
@@ -395,13 +439,19 @@ iptables -A FORWARD -p tcp --dport 22 -d 10.151.73.72/29 -i eth0 -j DROP
 
 hasil dapat dilihat pada foto berikut.
 
-(foto bukti ss)
+
+![2](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/2.1.png)
+
+
+![2](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/2.2.png)
 
 ## No. 3
 (3) Karena tim kalian maksimal terdiri dari 3 orang, Bibah meminta kalian untuk membatasi DHCP dan DNS server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan yang berasal dari mana saja menggunakan iptables pada masing masing server, selebihnya akan di DROP. 
 
 
 **Jawaban**
+
+
 pada `iptables` di Malang dan Mojokerto, diberi konfigurasi seperti berikut.
 ```
 iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j DROP
@@ -413,20 +463,23 @@ iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j
 ### Untuk Malang
 pengecekan dengan perintah `ping 10.151.73.74` pada 4 UML. pada UML keempat, tidak mendapat respon.
 
-(foto bukti ss)
+![4](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/3.png)
 
 ### Untuk Mojokerto
 pengecekan dengan perintah `ping 10.151.73.75` pada 4 UML. pada UML keempat, tidak mendapat respon.
 
-(foto bukti ss)
+![4](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/3.1.png)
 
 
 ## No. 4
 
 (4) Akses dari subnet SIDOARJO hanya diperbolehkan pada pukul 07.00 - 17.00 pada hari Senin sampai Jumat.
+
 Selain itu paket akan di REJECT.
 
 **Jawaban**
+
+
 pada `iptables` di Malang, diberi konfigurasi seperti berikut.
 ```
 iptables -A INPUT -s 192.168.1.2/24 -m time --timestart 00:00 --timestop 06:59 --weekdays Mon,Tue,Wed,Thu,Fri -j REJECT
@@ -438,16 +491,21 @@ iptables -A INPUT -s 192.168.1.2/24 -m time --weekdays Sat,Sun -j REJECT
 - untuk mengecek apakah perintah berhasil, diatur waktu pada UML Malang dan dilakukan ping dari Sidoarjo.
 
 ### Waktu boleh
-- set waktu di UML Malang menjadi `Senin, 20 Desember 2020, 09:00:00`
+- set waktu di UML Malang menjadi `Senin, 20 Januari 2020, 09:00:00`
 - ping Malang dari Sidoarjo dengan perintah `ping 10.151.73.74`
 
-(foto bukti ss)
+![4](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/4.3.png)
+
+![4](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/4.4.png)
 
 ### Waktu tidak boleh
-- set waktu di UML Malang menjadi `Minggu, 19 Desember 2020, 09:00:00`
+- set waktu di UML Malang menjadi `Minggu, 19 Januari 2020, 12:00:00`
 - ping Malang dari Sidoarjo dengan perintah `ping 10.151.73.74`
 
-(foto bukti ss)
+![4](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/4.png)
+
+![4](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/4.2.png)
+
 
 ## No. 5
 
@@ -455,6 +513,8 @@ iptables -A INPUT -s 192.168.1.2/24 -m time --weekdays Sat,Sun -j REJECT
 
 
 **Jawaban**
+
+
 pada `iptables` di Malang, diberi konfigurasi seperti berikut.
 ```
 iptables -A INPUT -s 192.168.2.2/24 -m time --timestart 07:01 --timestop 16:59 -j REJECT 
@@ -462,16 +522,20 @@ iptables -A INPUT -s 192.168.2.2/24 -m time --timestart 07:01 --timestop 16:59 -
 - menunjukkan bahwa paket akan di REJECT pada waktu selain pukul 17.00 - 07.00 tiap harinya.
 
 ### Waktu boleh
-- set waktu di UML Malang menjadi `Senin, 20 Desember 2020, 09:00:00`
+- set waktu di UML Malang menjadi `Minggu, 19 Januari 2020, 06:00:00`
 - ping Malang dari Gresik dengan perintah `ping 10.151.73.74`
 
-(foto bukti ss)
+![5](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/5.3.png)
+
+![5](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/5.4.png)
 
 ### Waktu tidak boleh
-- set waktu di UML Malang menjadi `Senin, 20 Desember 2020, 06:00:00`
+- set waktu di UML Malang menjadi `Minggu, 19 Januari 2020, 11:00:00`
 - ping Malang dari Gresik dengan perintah `ping 10.151.73.74`
 
-(foto bukti ss)
+![5](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/5.1.png)
+
+![5](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/5.2.png)
 
 ## No. 6
 
@@ -479,6 +543,8 @@ Karena kita memiliki 2 buah WEB Server, (6) Bibah ingin SURABAYA disetting sehin
 
 
 **Jawaban**
+
+
 pada `iptables` di Surabaya, ditambah konfigurasi seperti berikut.
 ```
 iptables -A PREROUTING -t nat -p tcp -d 192.168.0.15:80 --dport 80 -m statistic --mode nth --every 2 --packet 0 -j DNAT --to-destination 192.168.0.10
@@ -490,10 +556,18 @@ iptables -t nat -A POSTROUTING -p tcp --dport 80 -d 192.168.0.11 -j SNAT --to-so
 - `PREROUTING` digunakan untuk mengubah alamat tujuan sebelum routing.
 - `POSTROUTING` digunakan untuk mengubah alamat tujuan setelah routing.
 
+
+![6](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/6.1.png)
+
+
+![6](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/6.2.png)
+
 ## No. 7
 (7) Bibah ingin agar semua paket didrop oleh firewall (dalam topologi) tercatat dalam log pada setiap UML yang memiliki aturan drop. Bibah berterima kasih kepada kalian karena telah mau membantunya. Bibah juga mengingatkan agar semua aturan iptables harus disimpan pada sistem atau paling tidak kalian menyediakan script sebagai backup.
 
 **Jawaban**
+
+
 pada `iptables` di Surabaya, ditambah konfigurasi seperti berikut.
 ```
 iptables -N LOGGING
@@ -508,3 +582,10 @@ iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j
 iptables -A LOGGING -j LOG --log-prefix "IPTables-Dropped: " --log-level 4
 iptables -A LOGGING -j DROP
 ```
+
+
+![7](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/7.1.png)
+
+![7](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/7.2.png)
+
+![7](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/7.3.png)
