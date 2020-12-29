@@ -445,6 +445,9 @@ hasil dapat dilihat pada foto berikut.
 
 ![2](https://github.com/wardahnab/Jarkom_Modul5_Lapres_A08/blob/main/Gambar/2.2.png)
 
+
+Karena PuTTy berada di luar maka ketika menuliskan sesuatu tidak akan muncul di Malang
+
 ## No. 3
 (3) Karena tim kalian maksimal terdiri dari 3 orang, Bibah meminta kalian untuk membatasi DHCP dan DNS server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan yang berasal dari mana saja menggunakan iptables pada masing masing server, selebihnya akan di DROP. 
 
